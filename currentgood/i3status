@@ -5,15 +5,16 @@ general {
 	color_good = "#22a522"
 	color_degraded = "#be2422"
 	color_bad = "#be2422"
+	markup = "pango"
 }
 
-order += "disk /"
+# order += "disk /"
 order += "wireless wlan0"
 order += "ethernet enp9s0"
 order += "cpu_usage"
 order += "battery 0"
-order += "volume master"
 order += "tztime local"
+order += "volume master"
 
 wireless wlan0 {
 	format_up = " WiFi: %ip %quality %essid %bitrate "
@@ -26,17 +27,17 @@ ethernet enp9s0 {
 }
 
 battery 0 {
-	format = " Power: %status %percentage %remaining left "
+	format = "<span color='#ff4400'> Power: %status %percentage %remaining left </span>"
 	path = "/sys/class/power_supply/BAT0/uevent"
 	low_threshold = 20
 }
 
 tztime local {
-	format = " Date: %m/%d/%y  Time: %H:%M "
+	format = " Date: %m/%d/%y  Time: %H:%M:%S "
 }
 
 cpu_usage {
-	format = " CPU: %usage "
+	format = "<span color='#ff3861'> CPU: %usage </span>"
 }
 
 disk "/" {
