@@ -347,14 +347,27 @@ popup_during_fullscreen smart
 
 
 
-# Load Status
-# bar {
-#        status_command i3status
-#  }
+# Load Status     <colorclass> <border> <background> <text>
+bar {
+		position top
+        status_command i3status
+        font pango:DejaVu Sans mono 10
+       
+        colors {
+			background #000000
+			statusline #ffffff
+			separator #999999			
+			focused_workspace  #ff4400 #111111 #ffffff
+			active_workspace   #333333 #111111 #ffffff
+			inactive_workspace #222222 #000000 #888888
+			urgent_workspace   #2f343a #900000 #ffffff
+			binding_mode       #2f343a #900000 #ffffff	
+		}
+}
 
 
 # Polybar see also i3/launch.sh
-exec_always --no-startup-id ~/.config/polybar/launch.sh &amp;
+# exec_always --no-startup-id ~/.config/polybar/launch.sh &amp;
 
 # #---Exit Points---# #
 # bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Fool, you pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
