@@ -1,0 +1,53 @@
+general {
+	colors = true
+	interval = 1
+	output_format = i3bar
+	color_good = "#50fa7b"
+	color_degraded = "#be2422"
+	color_bad = "#be2422"
+	markup = "pango"
+}
+
+# Custom Colouring vis format = "<span color='#50fa7b'> ⛽ %status %percentage %remaining </span>"
+# order += "disk /"
+order += "wireless wlan0"
+order += "ethernet enp9s0"
+order += "cpu_usage"
+order += "battery 0"
+order += "tztime local"
+order += "volume master"
+
+wireless wlan0 {
+	format_up = " ◉ %ip %quality %essid %bitrate "
+	format_down = " ◎ 0.0.0.0"
+}
+
+ethernet enp9s0 {
+	format_up = " ◉ %ip %speed "
+	format_down = " ◎ 0.0.0.0"
+}
+
+battery 0 {
+	format = " %status %percentage %remaining "
+	path = "/sys/class/power_supply/BAT0/uevent"
+	low_threshold = 20
+}
+
+tztime local {
+	format = " %A %d %B - %H:%M:%S %p"
+}
+
+cpu_usage {
+	format = " %usage "
+}
+
+disk "/" {
+	format = " Disk: %free "
+}
+
+volume master {
+	format = " Vol: %volume "
+	device = "default"
+	mixer = "Master"
+	mixer_idx = 0
+}
